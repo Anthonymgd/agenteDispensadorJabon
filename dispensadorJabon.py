@@ -295,7 +295,229 @@ def dispensadorJabon():
                     print('No es una opción válida.')
         # Si la localización es igual a "L2", entonces
         elif respuesta_localizacion == 'L2':
-            ...
+            while(True):
+                # Almacena el estado de L2
+                estado_valor = input('¿La persona en la habitación '+respuesta_localizacion+' tiene las manos sucias?  (1:Si; 0:No) ')
+                # Si el estado de L2 es igual a "1" (sucio), entonces
+                if(estado_valor == '1'):
+                    # Las manos de L2 están sucias
+                    print('Manos sucias. Dispensando jabón...')
+                    # Aumenta el esfuerzo requerido en una unidad
+                    esfuerzo +=1
+                    # Se actualiza el estado de la localización dos (L2) de sucio (1) a limpio (0)
+                    estado_objetivo['L2'] = 0
+                    # Imprime el esfuerzo requerido hasta esta etapa
+                    print('Esfuerzo actual: '+str(esfuerzo))
+                    break
+                # Si el estado de L2 es igual a "0" (limpio), entonces
+                elif(estado_valor == '0'):
+                    #Las manos de L2 están limpias. No requiere acción
+                    print('Sus manos están limpias')
+                    print('Esfuerzo no requerido')
+                    # Imprime el esfuerzo requerido hasta esta etapa
+                    print('Esfuerzo actual: '+str(esfuerzo))
+                    break
+                else:
+                    print('Opción no válida. Ingrese 1 o 0.')
+            # While do para las localizaciones restantes. Sale si es igual a "Salir"
+            while(respuesta_localizacion != 'Salir' ):
+                print('---Agente Dispensador de jabón---')
+                print('---------------Menú--------------')
+                print('(Se debe ingresar la cadena de texto entre comillas, ejemplo: Salir)')
+                print('2: "L1" = baño')
+                print('3: "L3" = sala de estar')
+                print('4: "Salir"')
+                # Almacena la segunda localización
+                respuesta_localizacion = input('Ingrese la segunda localización: ')
+                # Si la localización almacenada es igual a "L1", entonces
+                if(respuesta_localizacion == 'L1'):
+                    # Do while
+                    while(True):
+                        # Almacena el estado de L1
+                        estado_valor = input('¿La persona en la habitación '+respuesta_localizacion+' tiene las manos sucias?  (1:Si; 0:No) ')
+                        # Si el estado de L1 es igual a "1" (sucio), entonces
+                        if(estado_valor == '1'):
+                            # Las manos de L1 están sucias
+                            print('Manos sucias. Dispensando jabón...')
+                            # Aumenta el esfuerzo requerido en una unidad
+                            esfuerzo +=1
+                            # Se actualiza el estado de la localización uno (L1) de sucio (1) a limpio (0)
+                            estado_objetivo['L1'] = 0
+                            # Imprime el esfuerzo requerido hasta esta etapa
+                            print('Esfuerzo actual: '+str(esfuerzo))
+                            # Almacena el estado de la localizacion restante (L3)
+                            estado_valor_restante = input('¿La persona en la habitación L3 (sala de estar) tiene las manos sucias?  (1:Si; 0:No) ')
+                            # Si el estado de L3 es igual a "1" (sucia), entonces
+                            if(estado_valor_restante == '1'):
+                                # Las manos de L3 están sucias
+                                print('Manos sucias. Dispensando jabón...')
+                                # Aumenta el esfuerzo requerido en una unidad
+                                esfuerzo +=1
+                                # Se actualiza el estado de la localización tres (L3) de sucio (1) a limpio (0)
+                                estado_objetivo['L3'] = 0
+                                # Se imprime el estado objetivo y el esfuerzo requerido hasta esta etapa
+                                print('Estado objetivo: '+str(estado_objetivo))
+                                print('Esfuerzo total: '+str(esfuerzo))
+                                print('Finalizando programa de agente dispensador de jabón...')
+                                # Se interrumpe la ejución con un tiempo de espera de 3 segundos
+                                time.sleep(3)
+                                # Se finaliza el programa   
+                                quit()
+                            # Si el estado de L3 es igual a "0" (limpia), entonces
+                            elif(estado_valor == '0'):
+                                # Las manos de L3 están limpias. Sin esfuerzo requerido
+                                print('Sus manos están limpias')
+                                print('Esfuerzo no requerido')
+                                # Se imprime el estado objetivo y el esfuerzo requerido hasta esta etapa
+                                print('Estado objetivo: '+str(estado_objetivo))
+                                print('Esfuerzo total: '+str(esfuerzo))
+                                print('Finalizando programa de agente dispensador de jabón...')
+                                # Se interrumpe la ejución con un tiempo de espera de 3 segundos
+                                time.sleep(3)
+                                # Se finaliza el programa   
+                                quit()
+                            else:
+                                print('Opción no válida. Ingrese 1 o 0.')
+                        # Si el estado de L1 es igual a "0" (limpio), entonces
+                        elif(estado_valor == '0'):
+                            # Las manos de L1 están limpias. Sin esfuerzo requerido
+                            print('Sus manos están limpias')
+                            print('Esfuerzo no requerido')
+                            # Imprime el esfuerzo requerido hasta esta etapa
+                            print('Esfuerzo actual: '+str(esfuerzo))
+                            # Almacena el estado de la localización restante (L3)
+                            estado_valor_restante = input('¿La persona en la habitación L3 (sala de estar) tiene las manos sucias?  (1:Si; 0:No) ')
+                            # Si el estado de L3 es igual a "1" (sucio), entonces
+                            if(estado_valor_restante == '1'):
+                                # Las manos de L3 están sucias.
+                                print('Manos sucias. Dispensando jabón...')
+                                # Aumenta el esfuerzo requerido en una unidad
+                                esfuerzo +=1
+                                # Se actualiza el estado de la localización tres (L3) de sucio (1) a limpio (0)
+                                estado_objetivo['L3'] = 0
+                                # Se imprime el estado objetivo y el esfuerzo requerido hasta esta etapa
+                                print('Estado objetivo: '+str(estado_objetivo))
+                                print('Esfuerzo total: '+str(esfuerzo))
+                                print('Finalizando programa de agente dispensador de jabón...')
+                                # Se interrumpe la ejución con un tiempo de espera de 3 segundos
+                                time.sleep(3)
+                                # Se finaliza el programa   
+                                quit()
+                            # Si el estado de L3 es igual a "0", entonces
+                            elif(estado_valor_restante == '0'):
+                                # Las manos de L3 están limpias. Sin esfuerzo requerido
+                                print('Sus manos están limpias')
+                                print('Esfuerzo no requerido')
+                                # Se imprime el estado objetivo y el esfuerzo requerido hasta esta etapa
+                                print('Estado objetivo: '+str(estado_objetivo))
+                                print('Esfuerzo total: '+str(esfuerzo))
+                                print('Finalizando programa de agente dispensador de jabón...')
+                                # Se interrumpe la ejución con un tiempo de espera de 3 segundos
+                                time.sleep(3)
+                                # Se finaliza el programa   
+                                quit()
+                            else:
+                                print('Opción no válida. Ingrese 1 o 0.')
+                            break
+                        else:
+                            print('Opción no válida. Ingrese 1 o 0.')
+                # Si la localización es igual a "L3", entonces
+                elif respuesta_localizacion == 'L3':
+                    # Do while
+                    while(True):
+                        # Almacena el estado de L3
+                        estado_valor = input('¿La persona en la habitación '+respuesta_localizacion+' tiene las manos sucias?  (1:Si; 0:No) ')
+                        # Si el estado de L3 es igual a "1", entonces
+                        if(estado_valor == '1'):
+                            # Las manos de L3 están sucias
+                            print('Manos sucias. Dispensando jabón...')
+                            # Aumenta el esfuerzo requerido en una unidad
+                            esfuerzo +=1
+                            # Se actualiza el estado de la localización tres (L3) de sucio (1) a limpio (0)
+                            estado_objetivo['L3'] = 0
+                            # Se imprime el esfuerzo hasta la etapa actual
+                            print('Esfuerzo actual: '+str(esfuerzo))
+                            # Almacena el estado de la localización restante (l1)
+                            estado_valor_restante = input('¿La persona en la habitación L1 (baño) tiene las manos sucias?  (1:Si; 0:No) ')
+                            # Si el estado de L1 es igual a "1", entonces
+                            if(estado_valor_restante == '1'):
+                                # Las manos de L1 están sucias
+                                print('Manos sucias. Dispensando jabón...')
+                                # Aumenta el esfuerzo requerido en una unidad
+                                esfuerzo +=1
+                                # Se actualiza el estado de la localización uno (L1) de sucio (1) a limpio (0)
+                                estado_objetivo['L1'] = 0
+                                # Se imprime el estado objetivo y el esfuerzo requerido hasta esta etapa
+                                print('Estado objetivo: '+str(estado_objetivo))
+                                print('Esfuerzo total: '+str(esfuerzo))
+                                print('Finalizando programa de agente dispensador de jabón...')
+                                # Se interrumpe la ejución con un tiempo de espera de 3 segundos
+                                time.sleep(3)
+                                # Se finaliza el programa   
+                                quit()
+                            # Si el estado de L1 es igual a "0", entonces
+                            elif(estado_valor_restante == '0'):
+                                # Las manos de L1 están sucias
+                                print('Sus manos están limpias')
+                                print('Esfuerzo no requerido')
+                                # Se imprime el estado objetivo y el esfuerzo requerido hasta esta etapa
+                                print('Estado objetivo: '+str(estado_objetivo))
+                                print('Esfuerzo total: '+str(esfuerzo))
+                                print('Finalizando programa de agente dispensador de jabón...')
+                                # Se interrumpe la ejución con un tiempo de espera de 3 segundos
+                                time.sleep(3)
+                                # Se finaliza el programa   
+                                quit()
+                            else:
+                                print('Opción no válida. Ingrese 1 o 0.')
+                        # Si el estado de L3 es igual a "0", entonces
+                        elif(estado_valor == '0'):
+                            # Las manos de L3 están limpias
+                            print('Sus manos están limpias')
+                            print('Esfuerzo no requerido')
+                            # Imprime el esfuerzo actual
+                            print('Esfuerzo actual: '+str(esfuerzo))
+                            # Almacena el estado de la localización restante (L1)
+                            estado_valor_restante = input('¿La persona en la habitación L1 (baño) tiene las manos sucias?  (1:Si; 0:No) ')
+                            # Si el estado de L1 es igual a "1", entonces
+                            if(estado_valor_restante == '1'):
+                                # Las manos de L1 están sucias
+                                print('Manos sucias. Dispensando jabón...')
+                                esfuerzo +=1
+                                # Se actualiza el estado de la localización uno (L1) de sucio (1) a limpio (0)
+                                estado_objetivo['L1'] = 0
+                                # Se imprime el estado objetivo y el esfuerzo requerido hasta esta etapa
+                                print('Estado objetivo: '+str(estado_objetivo))
+                                print('Esfuerzo total: '+str(esfuerzo))
+                                print('Finalizando programa de agente dispensador de jabón...')
+                                # Se interrumpe la ejución con un tiempo de espera de 3 segundos
+                                time.sleep(3)
+                                # Se finaliza el programa   
+                                quit()
+                            # Si el estado de L1 es igual a "0", entonces
+                            elif(estado_valor == '0'):
+                                # Las manos de L1 están limpias. Sin esfuerzo requerido
+                                print('Sus manos están limpias')
+                                print('Esfuerzo no requerido')
+                                # Se imprime el estado objetivo y el esfuerzo requerido hasta esta etapa
+                                print('Estado objetivo: '+str(estado_objetivo))
+                                print('Esfuerzo total: '+str(esfuerzo))
+                                print('Finalizando programa de agente dispensador de jabón...')
+                                # Se interrumpe la ejución con un tiempo de espera de 3 segundos
+                                time.sleep(3)
+                                # Se finaliza el programa   
+                                quit()
+                            else:
+                                print('Opción no válida. Ingrese 1 o 0.')
+                            break
+                        else:
+                            print('Opción no válida. Ingrese 1 o 0.')
+                # Si la respuesta es "Salir" rompe el bucle repetitivo
+                elif(respuesta_localizacion == 'Salir'):
+                    break
+                else:
+                    print('No es una opción válida.')
+        # Si la localización ingresada es "L3", entonces
         elif respuesta_localizacion == 'L3':
             ...
         elif(respuesta_localizacion == 'Salir'):
